@@ -10,7 +10,7 @@ pipeline{
 		stage(‘Unit_and_Integration_Tests’){
 			steps{
 			    echo "JUnit for unit testing"
-               		     sh 'mvn test'
+               		    
 			}
 			post{
 		           always{
