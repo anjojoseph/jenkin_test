@@ -14,11 +14,11 @@ pipeline{
 			}
 			post{
 		           always{
-		        	 
-	                            emailext to: "anjojosephapj@gmail.com",
+		        	    emailext to: "anjojosephapj@gmail.com",
 			            subject: "Unit_and_Integration_Tests: ${currentBuild.currentResult}",
-			            body: "Unit_and_Integration_Tests status : ${currentBuild.currentResult}. \nMore Info can be found here: ${env.BUILD_URL} "
+			            body: "Unit_and_Integration_Tests status : ${currentBuild.currentResult}",
 			            attachLog: true
+	                
                 	    }
            		 }
 
