@@ -12,6 +12,16 @@ pipeline{
 			    echo "JUnit for unit testing"
                
 			}
+			post{
+		           always{
+		        	 
+	                            emailext to: "anjojosephapj@gmail.com",
+			            subject: "Unit_and_Integration_Tests: ${currentBuild.currentResult}",
+			            body: "Test",
+			            attachLog: true
+                	    }
+           		 }
+
 		}
 		stage(‘Code_Analysis’){
 			steps{
