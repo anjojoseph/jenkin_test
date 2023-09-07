@@ -32,6 +32,15 @@ pipeline{
 			steps{
 			    echo "OWASP ZAP for security scanning"
 			}
+			post{
+		           always{
+		        	    emailext to: "anjojosephapj@gmail.com",
+			            subject: "Security_Scan: ${currentBuild.currentResult}",
+			            body: "Security_Scan status : ${currentBuild.currentResult}",
+			            attachLog: true
+	                
+                	    }
+           		 }
 		}
 		stage(‘Deploy_to_Staging’){
 			steps{
