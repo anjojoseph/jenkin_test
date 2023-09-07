@@ -16,8 +16,8 @@ pipeline{
 		           always{
 		        	 
 	                            emailext to: "anjojosephapj@gmail.com",
-			            subject: "Unit_and_Integration_Tests: ${currentBuild.currentResult}"
-			            body: "Please note that, your Unit_and_Integration_Tests is ${currentBuild.currentResult}. \nMore Info can be found here: ${env.BUILD_URL} "
+			            subject: "Unit_and_Integration_Tests: ${currentBuild.currentResult}",
+			            body: "Unit_and_Integration_Tests status : ${currentBuild.currentResult}. \nMore Info can be found here: ${env.BUILD_URL} "
 			            attachLog: true
                 	    }
            		 }
