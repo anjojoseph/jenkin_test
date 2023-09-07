@@ -1,11 +1,6 @@
 pipeline{
 	agent any
-	environment{
-	    DIRECTORY_PATH="D:/jenkin/codes/"
-        TESTING_ENVIRONMENT="Test"
-        PRODUCTION_ENVIRONMENT="Anjo Joseph"
-    }
-
+	
 	stages{
 		stage(‘Build’){
 			steps{
@@ -17,6 +12,7 @@ pipeline{
 		        	 mail to: "anjojosephaph@gmail.com",
 	                         subject: "Build Status Email",
 	                         body: "Build log attached!"
+				 attachLog: true
                 	    }
            		 }
 		}
