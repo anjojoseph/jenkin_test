@@ -1,0 +1,49 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Build') {
+      steps {
+        sh 'mvn clean install'
+      }
+    }
+
+    stage('Unit and Integration Tests') {
+      steps {
+        sh 'mvn test'
+      }
+    }
+
+    stage('Code Analysis') {
+      steps {
+        sh 'sonar-scanner'
+      }
+    }
+
+    stage('Security Scan') {
+      steps {
+        sh 'owasp-zap-scan'
+      }
+    }
+
+    stage('Deploy to Staging') {
+      steps {
+        sh 'ssh ec2-user@staging-server "mkdir -p /var/www/app"'
+        sh 'scp -r target/app.war ec2-user@staging-server:/var/www/app'
+      }
+    }
+
+    stage('Integration Tests on Staging') {
+      steps {
+        sh 'ssh ec2-user@staging-server "curl -f http://localhost:8080/app"'
+      }
+    }
+
+    stage('Deploy to Production') {
+      steps {
+        sh 'ssh ec2-user@production-server "mkdir -p /var/www/app"'
+        sh 'scp -r target/app.war ec2-user@production-server:/var/www/app'
+      }
+    }
+  }
+}
