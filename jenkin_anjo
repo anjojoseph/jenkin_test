@@ -14,7 +14,9 @@ pipeline{
 			}
 			post{
 		           always{
-		        	 echo 'This will always run' 
+		        	 mail to: "anjojosephaph@gmail.com",
+	                         subject: "Build Status Email",
+	                         body: "Build log attached!"
                 	    }
            		 }
 		}
