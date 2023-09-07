@@ -7,7 +7,7 @@ pipeline{
                 
 			}
 		}
-		stage(‘Unit_and_Integration Tests’){
+		stage(‘Unit_and_Integration_Tests’){
 			steps{
 			    echo "JUnit for unit testing"
                
@@ -23,13 +23,13 @@ pipeline{
 			    echo "OWASP ZAP for security scanning"
 			}
 		}
-		stage(‘Deploy to Staging’){
+		stage(‘Deploy_to_Staging’){
 			steps{
 			    echo "SSH for deploying the application to staging"
 			    
 			}
 		}
-		stage(‘Integration Tests on Staging’){
+		stage(‘Integration_Tests_on_Staging’){
 			steps{
 			    echo "Selenium for Integration Tests on Staging"
 			}
